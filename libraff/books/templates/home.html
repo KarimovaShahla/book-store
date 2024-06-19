@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Store</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <style>
+           body {
+        font-family: Arial, sans-serif;
+        background-color: rgb(192, 255, 251);
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .book-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 20px;
+        width: 100%;
+        max-width: 1200px;
+    }
+
+    .book-card {
+        background-color: rgb(255, 255, 100);
+        border: 1px solid #dddddd;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .book-image {
+        width: 100%;
+        height: auto;
+        max-height: 200px;
+    }
+
+    .book-details {
+        padding: 15px;
+        text-align: center;
+    }
+
+    .book-title {
+        font-size: 1.5em;
+        margin: 10px 0;
+    }
+
+    .book-genre,
+    .book-author,
+    .book-language,
+    .book-price {
+        font-size: 1em;
+        color: #555;
+        margin: 5px 0;
+    }
+
+    </style>
+    <div class="book-container">
+        {% for b in books %}
+        <div class="book-card">
+            <img src="{{ b.get_thumbnail_photo_url }}" alt="Book Cover" class="book-image">
+            <div class="book-details">
+                <h2 class="book-title">{{ b.name }}</h2>
+                <p class="book-genre">Genre: {{ b.genre }}</p>
+                <p class="book-author">Author: {{ b.author }}</p>
+                <p class="book-language">Language: {{ b.language }}</p>
+                <p class="book-price">Price: {{ b.price }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
